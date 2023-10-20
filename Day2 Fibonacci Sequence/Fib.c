@@ -25,7 +25,11 @@ int main(void)
         }
     }
     //Ternary operators for number suffixes
-    printf("Fibonacci Sequence up to the %d%s number: ", requested_number, requested_number == 1 ? "st" : requested_number == 2 ? "nd" : requested_number == 3 ? "rd" : "th");
+    printf("Fibonacci Sequence up to the %d%s number: ", requested_number, 
+    requested_number == 1 ? "st" : 
+    requested_number == 2 ? "nd" : 
+    requested_number == 3 ? "rd" : 
+    /* Default case */      "th");
 
     if(requested_number >= 1)
         printf("%lld, ", current_number);
@@ -37,7 +41,7 @@ int main(void)
         //Edge condition that deals with overflow
         if(LLONG_MAX - current_number < next_number)
         {
-            printf("Overflow occured at: %d. Exiting program.\n", i - 1);
+            printf("\n\nOverflow occured at: %d. Exiting program.\n", i);
             break;
         }
         
