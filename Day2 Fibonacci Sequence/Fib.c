@@ -2,8 +2,6 @@
 #include <stdbool.h>
 #include <limits.h>
 
-
-
 int main(void)
 {
     int requested_number;
@@ -26,15 +24,15 @@ int main(void)
             break;
         }
     }
-
-    printf("Fibonacci Sequence up to the %d number: ", requested_number);
+    //Ternary operators for number suffixes
+    printf("Fibonacci Sequence up to the %d%s number: ", requested_number, requested_number == 1 ? "st" : requested_number == 2 ? "nd" : requested_number == 3 ? "rd" : "th");
 
     if(requested_number >= 1)
         printf("%lld, ", current_number);
     if(requested_number >= 2)
         printf("%lld, ", next_number);
     
-    for (int i = 3; i <= requested_number; i++)
+    for (int i = 3; i <= requested_number ; i++)
     {
         //Edge condition that deals with overflow
         if(LLONG_MAX - current_number < next_number)
@@ -44,7 +42,15 @@ int main(void)
         }
         
             temp = current_number + next_number;
-            printf("%lld, ", temp);
+            //QOL, ensures last number doesn't have a comma
+            if( i < requested_number)
+            {
+                printf("%lld, ", temp);
+            }
+            else
+            {
+                printf("%lld", temp);
+            }
 
             current_number = next_number;
             next_number = temp;
